@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="create a 3D object"/>
+	<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script> 
+	
+</head>
+	<body>
+		<a-scene>
+			<a-assets>
+				<a-asset-item id="object" src="models/dog.obj"></a-asset-item>
+				<a-asset-item id="material" src="models/dog.mtl"></a-asset-item>
+			</a-assets>
+
+			<a-entity obj-model="obj: #object; mtl: #material"></a-entity>
+		</a-scene>
+	</body>
+</html>
