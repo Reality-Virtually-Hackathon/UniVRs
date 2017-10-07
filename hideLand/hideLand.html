@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Our First A-Frame Experience</title>
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script>
+
+    <script>
+        /* global AFRAME */
+        AFRAME.registerComponent('hide-on-click', {
+            dependencies: ['raycaster'],
+            schema: {
+                target: {type: 'selector'}
+            },
+            init: function () {
+                var data = this.data;
+                var el = this.el;
+                el.addEventListener('click', function () {
+                    el.setAttribute('visible', false);
+                    data.target.setAttribute('visible', true);
+
+                });
+            }
+        });
+    </script>
+    <style>
+        #placeToDisplay {
+            width: 512px;
+            height: 512px;
+            top: 20px;
+            position: absolute;
+            z-index: -1;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+<div id="placeToDisplay"><img src="./tobeHide.png" alt=""></div>
+
+<a-scene>
+	<a-assets>
+		<img id="texture" src="./corn.png">]
+	</a-assets>
+<!--
+	<a-assets>
+            <a-asset-item src="/models/dog.obj" id="dog-model"></a-asset-item>
+            <a-asset-item src="/models/dog.mtl" id="dog-mtl"></a-asset-item>
+    </a-assets>
+-->
+
+    <a-entity hide-on-click="target:#objtoShow">
+        <a-entity id="default_egg"
+                  geometry="primitive:plane;width:2;height:2;"
+                  position="-3 -3 -10"
+                  material="shader:html;target:#placeToDisplay;transparent:true;fps:0;">
+        </a-entity>
+    </a-entity>
+   
+     <a-box id="objtoShow" visible="false" position="-3 -3 -10" rotation="0 45 0" width="1" height="1" depth="1" src="#texture">
+     </a-box>
+    
+    <!-- Camera + cursor. -->
+    <a-entity camera look-controls>
+        <a-cursor id="cursor"
+                  animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                  animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                  event-set__1="_event: mouseenter; color: #0092d8"
+                  event-set__2="_event: mouseleave; color: black"></a-cursor>
+    </a-entity>
+    <a-sky src="https://farm8.staticflickr.com/7197/6839824524_705e27ea8d_h.jpg"></a-sky>
+</a-scene>
+</body>
+</html>
