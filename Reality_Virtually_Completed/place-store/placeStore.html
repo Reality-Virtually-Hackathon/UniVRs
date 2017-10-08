@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+	<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
+	</head>
+	<body>
+		<a-scene>
+				<a-assets>
+				<img id="sky" src="img/store.png">
+				<a-mixin id="wheat-ply" src="models/plants/wheat.ply"></a-mixin>
+				<a-mixin id="rafflesia-ply" src="models/plants/rafflesia.ply"></a-mixin>
+				<a-mixin id="venus-ply" src="models/plants/venus.ply"></a-mixin>
+				</a-assets>
+
+				<a-entity id="wheat" ply-model="src:models/plants/wheat.ply" position="2286.158 -755.598 -3674.335" rotation="-90 0 0" scale="50 50 50"></a-entity>
+				<a-entity id="wheat-2" ply-model="src:models/plants/wheat.ply" position="2618.157 -755.598 -3420.967" rotation="-90 0 0" scale="50 50 50"></a-entity>
+				<a-entity id="wheat-3" ply-model="src:models/plants/wheat.ply" position="2946.728 -755.598 -3083.584" rotation="-90 0 0" scale="50 50 50"></a-entity>
+				<a-entity id="wheat-4" ply-model="src:models/plants/wheat.ply" position="3225.781 -755.598 -2782.735" rotation="-90 0 0" scale="50 50 50"></a-entity>
+
+				<a-entity id="rafflesia" ply-model="src:models/plants/rafflesia.ply" position="1480.368 -453.835 -3990.479" rotation="180 180 0" scale="75 75 75"></a-entity>
+
+				<a-entity id="venus" ply-model="src:models/plants/venus.ply" position="3665.478 -755.598 -2294.035" rotation="-90 0 0" scale="50 50 50"></a-entity>
+				<a-entity id="venus-2" ply-model="src:models/plants/venus.ply" position="3931.198 -755.598 -1741.423" rotation="-90 90 0" scale="50 50 50"></a-entity>
+
+			<!--<a-entity camera="userHeight: 1.6" look-controls></a-entity>-->
+			<a-entity camera look-controls wasd-controls></a-entity>
+
+			<a-sky src="#sky"></a-sky>
+
+		</a-scene>
+	</body>
+</html>
