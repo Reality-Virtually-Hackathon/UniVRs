@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sunrise</title>
+    <meta name="description" content="Links – A-Frame">
+    <script src="../../../dist/aframe-master.js"></script>
+    <script src="js/components/aframe-tooltip-component.js"></script>
+    <script src="js/components/camera-position.js"></script>
+    <script src="js/components/ground.js"></script>
+    <script src="js/components/link-controls.js"></script>
+    <script src="shaders/skyGradient.js"></script>
+  </head>
+  <body>
+    <a-scene fog="color: #241417; near: 0; far: 30;" raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
+      <a-assets>
+        <img id="portal" crossOrigin="anonymous" src="https://farm5.staticflickr.com/4452/37211534510_5f66f8dbf0_h.jpg">
+        <img id="thumbHome" crossOrigin="anonymous" src="images/home.png">
+        <img id="thumbStore" crossOrigin="anonymous" src="images/store.png">
+        <img id="thumbFarm" crossOrigin="anonymous" src="images/farm.png">
+        <img id="thumbMeeting" crossOrigin="anonymous" src="images/meeting.png">
+
+      </a-assets>
+      <a-link href="index.html" position="-4.5 1.5 -1.0" image="#portal"></a-link>
+      <a-link href="home.html" position="-1.5 1.5 -1.0" image="#thumbHome"></a-link>
+      <a-link href="farm.html" position="1.5 1.5 -1.0" image="#thumbFarm"></a-link>
+      <a-link href="meeting.html" position="4.5 1.5 -1.0" image="#thumbMeeting"></a-link>
+
+      <a-entity id="sky"
+                geometry="primitive: sphere; radius: 65;"
+                material="shader: skyGradient; colorTop: #353449; colorBottom: #BC483E; side: back"></a-entity>
+      <a-entity ground='url: https://cdn.aframe.io/link-traversal/models/groundSunrise.json'></a-entity>
+      <a-entity light="type: point; color: #f4f4f4; intensity: 0.4; distance: 0" position="0 2 0"></a-entity>
+      <a-entity id="leftHand" link-controls="hand: left"></a-entity>
+      <a-entity id="rightHand" link-controls="hand: right"></a-entity>
+    </a-scene>
+  </body>
+</html>
